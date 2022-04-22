@@ -1,0 +1,4 @@
+pool:
+  vmImage: ubuntu-latest
+steps:
+- script: azcopy sync "$(source_url)" "$(target_url)"
