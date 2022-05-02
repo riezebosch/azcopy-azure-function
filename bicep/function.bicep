@@ -168,6 +168,9 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
   name: name
   location: location
   kind: 'functionapp'
+  identity: {
+    type: 'SystemAssigned'
+  }
   properties: {
     serverFarmId: plan.id
     siteConfig: {
