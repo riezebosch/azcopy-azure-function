@@ -14,6 +14,6 @@ Write-Host "PowerShell timer trigger function ran! TIME: $currentUTCtime"
 
 $env:AZCOPY_LOG_LOCATION = $env:AZCOPY_JOB_PLAN_LOCATION = "$env:TEMP\.azcopy"
 $env:AZCOPY_CONCURRENCY_VALUE = 1000
-$env:AZCOPY_CONCURRENT_SCAN = 256
+$env:AZCOPY_CONCURRENT_SCAN = 1000
 
 & $PSScriptRoot\azcopy.exe sync $env:SOURCE $env:SINK --delete-destination true | Write-Host
