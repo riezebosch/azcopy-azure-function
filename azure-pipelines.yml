@@ -13,3 +13,9 @@ steps:
     SOURCE: $(source_url)
     SINK: $(target_url)
     DEPLOYMENT: $(Build.DefinitionName)-$(Build.BuildId)
+- task: AzureFunctionApp@1
+  inputs:
+    package: $(Build.SourcesDirectory)/bicep/fscp3.0/function
+    azureSubscription: manuelr-d-rg
+    appType: functionApp
+    appName: macvvx6a4weewfunction
