@@ -1,4 +1,15 @@
 pool:
   vmImage: ubuntu-latest
 steps:
-- script: azcopy sync "$(source_url)" "$(target_url)"
+- task: AzureCLI@2
+  inputs:
+    azureSubscription: manuelr-d-rg
+    inlineScript: |
+      az bicep install
+      az deployment group create -g manuelr-d-rg -n $DEPLOYMENT -f ./bicep/fscp3.0/function.bicep --parameters sas_source=$SOURCE sas_sink=$SINK name=macvvx6a4weewfunction
+    scriptType: bash
+    scriptLocation: inlineScript
+  env:
+    SOURCE: $(source_url)
+    SINK: $(target_url)
+    DEPLOYMENT: $(Build.DefinitionName)-$(Build.BuildId)
