@@ -150,17 +150,15 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 }
 
 resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
-  name: 'EP1'
+  name: name
   location: location
   // kind: 'linux'
   sku: {
-    name: 'EP1'
-    tier: 'ElasticPremium'
-    family: 'EP'
+    name: 'P3'
+    tier: 'PremiumV3'
   }
   properties: {
     // reserved: true
-    
   }
 }
 
@@ -206,6 +204,7 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
       ]
       netFrameworkVersion: 'v6.0'
       powerShellVersion: '7.2'
+      alwaysOn: true
     }
   }
 }
