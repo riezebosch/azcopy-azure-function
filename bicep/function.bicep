@@ -25,7 +25,7 @@ resource ai 'Microsoft.Insights/components@2020-02-02' = {
   properties: {
     Application_Type: 'web'
     WorkspaceResourceId: workspace.id
-  }  
+  }
   kind: 'web'
 }
 
@@ -73,7 +73,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
     supportsHttpsTrafficOnly: true
     minimumTlsVersion: 'TLS1_2'
     allowBlobPublicAccess: false
-  
+
     networkAcls: {
       bypass: 'None'
       defaultAction: 'Deny'
@@ -152,13 +152,13 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: name
   location: location
-  // kind: 'linux'
+  kind: 'linux'
   sku: {
     name: 'P3'
     tier: 'PremiumV3'
   }
   properties: {
-    // reserved: true
+    reserved: true
   }
 }
 
@@ -175,7 +175,7 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
       appSettings: [
         {
           name: 'AzureWebJobsStorage'
-          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id,'2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
+          value: 'DefaultEndpointsProtocol=https;AccountName=${storage.name};AccountKey=${listKeys(storage.id, '2019-06-01').keys[0].value};EndpointSuffix=core.windows.net'
         }
         {
           name: 'FUNCTIONS_WORKER_RUNTIME'
