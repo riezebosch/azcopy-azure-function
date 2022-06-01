@@ -201,6 +201,14 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
           name: 'SINK'
           value: sas_sink
         }
+        {
+          name: 'AZCOPY_CONCURRENCY_VALUE'
+          value: '1000000'
+        }
+        {
+          name: 'AZCOPY_CONCURRENT_SCAN'
+          value: '1000'
+        }
       ]
       netFrameworkVersion: 'v6.0'
       powerShellVersion: '7.2'
