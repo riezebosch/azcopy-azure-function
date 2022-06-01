@@ -154,8 +154,8 @@ resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
   location: location
   kind: 'linux'
   sku: {
-    name: 'P3'
-    tier: 'PremiumV3'
+    name: 'P1V2'
+    tier: 'PremiumV2'
   }
   properties: {
     reserved: true
