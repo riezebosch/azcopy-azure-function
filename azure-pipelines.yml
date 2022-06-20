@@ -6,9 +6,9 @@ steps:
     azureSubscription: manuelr-d-rg
     inlineScript: |
       az bicep install
-      az deployment group create -g $RG -n $DEPLOYMENT -f ./bicep/fscp3.0/function.bicep --parameters sas_source=$SOURCE sas_sink=$SINK name=$APP
+      az deployment group create -g $RG -n $DEPLOYMENT -f ./bicep/function.bicep --parameters sas_source=$SOURCE sas_sink=$SINK name=$APP
 
-      cd ./bicep/fscp3.0/function
+      cd ./function
       zip -r ../function.zip ./ && az functionapp deployment source config-zip -g $RG -n $APP --src ../function.zip
     scriptType: bash
     scriptLocation: inlineScript
