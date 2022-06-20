@@ -152,14 +152,14 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: name
   location: location
-  kind: 'linux'
+  // kind: 'linux'
   sku: {
     name: 'P3V3'
     tier: 'PremiumV3'
   }
-  properties: {
-    reserved: true
-  }
+  // properties: {
+  //   reserved: true
+  // }
 }
 
 resource app 'Microsoft.Web/sites@2021-03-01' = {
