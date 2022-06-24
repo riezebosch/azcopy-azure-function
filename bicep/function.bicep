@@ -152,14 +152,14 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
 resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: name
   location: location
-  // kind: 'linux'
+  kind: 'linux'
   sku: {
     name: 'P3V3'
     tier: 'PremiumV3'
   }
-  // properties: {
-  //   reserved: true
-  // }
+  properties: {
+    reserved: true
+  }
 }
 
 resource app 'Microsoft.Web/sites@2021-03-01' = {
@@ -203,11 +203,15 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
         }
         {
           name: 'AZCOPY_CONCURRENCY_VALUE'
-          value: '1000000'
+          value: '1000'
         }
         {
           name: 'AZCOPY_CONCURRENT_SCAN'
           value: '1000'
+        }
+        {
+          name: 'WEBSITE_PROACTIVE_AUTOHEAL_ENABLED'
+          value: 'false'
         }
       ]
       netFrameworkVersion: 'v6.0'
