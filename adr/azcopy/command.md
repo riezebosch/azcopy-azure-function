@@ -18,4 +18,6 @@ log-level ERROR         | prevent the disk from overflowing
 *>&1                    | redirect all output streams to stdout
 Write-Ouptut            | make sure output is redirected to log analytics
 
+Using `copy --recursive` instead of `sync` has the drawback that deletions in the source container are not reflected in the destination container.
+
 Remark: ACL's are only updated on copy and ignored when copy is skipped.
