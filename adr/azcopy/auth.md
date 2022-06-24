@@ -14,3 +14,17 @@ New-AzStorageContainerSASToken -Context $context -Name $name -Permission racwlme
 ```
 
 Using the `New-AzStorageContext` requires you to specify its `name` _and_ `resource group` when not using the connection string.
+
+Having the `az` cmdlets has an impact on warmup time since the packages need to installed:
+
+
+`requirements.psd1`:
+```powershell
+@{
+    # For latest supported version, go to 'https://www.powershellgallery.com/packages/Az'. 
+    # To use the Az module in your function app, please uncomment the line below.
+    # 'Az' = '7.*'
+    'Az.Accounts' = '2.7'
+    'Az.Storage' = '4.5'
+}
+```

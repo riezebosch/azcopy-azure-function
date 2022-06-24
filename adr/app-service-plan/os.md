@@ -1,7 +1,9 @@
 # Linux
 
-Stable
-Quick
-Cheap
+On Linux in a P3V3 plan the solution turns out to be:
 
-On Windows the process tends to crash on remoting errors.
+* Stable
+* Quick
+* Cheap(ish)
+
+On Windows the process crashes after +1h with PowerShell Remoting errors.
