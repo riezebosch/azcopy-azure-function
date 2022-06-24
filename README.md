@@ -18,9 +18,9 @@ P3V3:
 
 ### Linux
 
-* Disk space issues
-* Memory issues
-* Extremely slow
+* <s>Disk space issues</s>
+* <s>Memory issues</s>
+* <s>Extremely slow</s>
 * Stable
 
 ### Windows
