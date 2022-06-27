@@ -7,19 +7,17 @@ if ($Timer.IsPastDue) {
     Write-Host "PowerShell timer is running late!"
 }
 
-# /tmp is automatically cleared after the function finishes
-# preventing from overflowing the disk with log files and job plans
-$env:AZCOPY_LOG_LOCATION = Join-Path (Get-Item temp:) '.azcopy'
-$env:AZCOPY_JOB_PLAN_LOCATION = Join-Path $env:AZCOPY_LOG_LOCATION 'plans'
+Write-Output "clean"
+& $PSScriptRoot/azcopy jobs clean *>&1 | Write-Output
 
-Write-Host $env:AZCOPY_LOG_LOCATION
-Write-Host $env:AZCOPY_JOB_PLAN_LOCATION
-
+Write-Output "env"
 & $PSScriptRoot/azcopy env *>&1 | Write-Output
 
+Write-Output "copy"
 # azcopy sync crashes on subsequent runs after indexing the destination container
-# azcopy v10.14.1 write humongous log files even with log level set to NONE
+# azcopy v10.15.0 writes humongous log files even with log level set to NONE
 & $PSScriptRoot/azcopy copy $env:SOURCE $env:SINK --recursive --overwrite ifSourceNewer --preserve-permissions --log-level ERROR *>&1 | Write-Output
 if ($LASTEXITCODE -ne 0) {
     throw "Exit code: $LASTEXITCODE"
 }
+
