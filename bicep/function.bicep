@@ -1,7 +1,8 @@
 param name string
+param location string = resourceGroup().location
+param schedule string = '0 0 22 * * *'
 param sas_source string
 param sas_sink string
-param location string = resourceGroup().location
 
 resource workspace 'Microsoft.OperationalInsights/workspaces@2020-08-01' = {
   name: name
@@ -192,6 +193,10 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
         {
           name: 'APPINSIGHTS_INSTRUMENTATIONKEY'
           value: ai.properties.InstrumentationKey
+        }
+        {
+          name: 'TimerSchedule'
+          value: schedule
         }
         {
           name: 'SOURCE'
