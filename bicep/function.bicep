@@ -155,6 +155,20 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
   }
 }
 
+resource shares 'Microsoft.Storage/storageAccounts/fileServices@2021-09-01' = {
+  name: 'default'
+  parent: storage
+}
+
+resource share 'Microsoft.Storage/storageAccounts/fileServices/shares@2021-09-01' = {
+  name: 'azcopy-logs'
+  parent: shares
+  properties: {
+    accessTier: 'Cool'
+  }
+
+}
+
 // reuse same app service for deploying multiple functionapps
 resource plan 'Microsoft.Web/serverfarms@2020-12-01' = {
   name: name
@@ -226,10 +240,23 @@ resource app 'Microsoft.Web/sites@2021-03-01' = {
           name: 'WEBSITE_PROACTIVE_AUTOHEAL_ENABLED'
           value: 'false' // high CPU and memory load is to be expected
         }
+        {
+          name: 'AZCOPY_LOG_LOCATION'
+          value: '/mnt/azcopy'
+        }
       ]
       netFrameworkVersion: 'v6.0'
       powerShellVersion: '7.2'
       alwaysOn: true
+      azureStorageAccounts: {
+        'azcopy-logs': {
+          type: 'AzureFiles'
+          accountName: storage.name
+          shareName: share.name
+          mountPath: '/mnt/azcopy'
+          accessKey: storage.listKeys().keys[0].value
+        }
+      }
     }
   }
 }

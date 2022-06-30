@@ -39,3 +39,14 @@ Peek into the [azure-pipelines.yml](./azure-pipelines.yml) to see how the functi
 * `az functionapp` is used to deploy the functionapp from a `config-zip`.
 
 See [adr](adr/deployment/).
+
+## Logging and Monitoring
+
+To examine the results peek into Log Analytics via functionapp -> Functions -> azcopy -> Monitor
+![invocations](docs/img/invocations.png)
+
+For running functions peek into Log Analytics via functionapp -> Functions -> azcopy -> Monitor -> Logs -> App Insights
+![logs](docs/img/logs.png)
+
+To view the errors (for failed copies e.g.) download the logs in the storage account fromt the `azcopy-logs` file share:
+![errors](docs/img/errors.png)
