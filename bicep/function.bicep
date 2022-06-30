@@ -88,68 +88,7 @@ resource storage 'Microsoft.Storage/storageAccounts@2021-08-01' = {
           action: 'Allow'
         }
       ]
-      // added all the ip rules used in FSCP2.0, in comments denied rules on FSCP3.0
       ipRules: [
-        {
-          value: '20.76.109.96'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.97'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.98'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.99'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.102'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.103'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.106'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.107'
-          action: 'Allow'
-        }
-        {
-          value: '20.76.109.110'
-          action: 'Allow'
-        }
-        // {
-        //   value: '20.101.218.112/28'
-        //   action: 'Allow'
-        // }
-        // {
-        //   value: '20.101.218.128/28'
-        //   action: 'Allow'
-        // }
-        // {
-        //   value: '52.156.255.136/29'
-        //   action: 'Allow'
-        // }
-        {
-          value: '164.140.188.224/28'
-          action: 'Allow'
-        }
-        {
-          value: '164.140.203.224/28'
-          action: 'Allow'
-        }
-        {
-          value: '167.202.201.0/27'
-          action: 'Allow'
-        }
       ]
     }
   }
